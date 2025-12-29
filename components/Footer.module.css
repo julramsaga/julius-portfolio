@@ -1,0 +1,13 @@
+.footer {
+  background-color: var(--mantine-color-gray-9);
+  color: var(--mantine-color-gray-4);
+  padding: 2rem 0;
+  text-align: center;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+

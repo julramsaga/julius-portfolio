@@ -1,0 +1,56 @@
+.hero {
+  padding: calc(80px + 6rem) 0 6rem;
+  background: linear-gradient(180deg, var(--mantine-color-gray-0) 0%, var(--mantine-color-gray-1) 100%);
+}
+
+.content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+@media (max-width: 1024px) {
+  .content {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+.text {
+  max-width: 100%;
+}
+
+.title {
+  font-family: 'Playfair Display', serif;
+  font-size: 3.75rem;
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--mantine-color-gray-9);
+  margin-bottom: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 2.5rem;
+  }
+}
+
+.greeting {
+  display: block;
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: var(--mantine-color-gray-6);
+  margin-bottom: 0.5rem;
+}
+
+.name {
+  display: block;
+}
+
+.visual {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+

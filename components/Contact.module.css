@@ -1,0 +1,26 @@
+.contact {
+  padding: var(--section-padding);
+}
+
+.formWrapper {
+  background-color: var(--mantine-color-gray-0);
+  padding: 1.5rem;
+  border-radius: 1rem;
+  box-shadow: var(--mantine-shadow-lg);
+}
+
+.socialLinks {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.socialLinks a {
+  text-decoration: none;
+  transition: color 150ms ease;
+}
+
+.socialLinks a:hover {
+  color: var(--mantine-color-indigo-6);
+}
+

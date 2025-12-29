@@ -1,0 +1,30 @@
+.skills {
+  padding: var(--section-padding);
+}
+
+.categoryCard {
+  background-color: var(--mantine-color-gray-0);
+  transition: transform 300ms ease;
+}
+
+.categoryCard:hover {
+  transform: translateY(-4px);
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tag {
+  cursor: default;
+  transition: all 150ms ease;
+}
+
+.tag:hover {
+  background-color: var(--mantine-color-indigo-6);
+  color: white;
+  transform: translateY(-2px);
+}
+

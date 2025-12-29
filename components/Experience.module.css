@@ -1,0 +1,55 @@
+.experience {
+  background-color: var(--mantine-color-gray-0);
+  padding: var(--section-padding);
+}
+
+.timeline {
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+  padding-left: 2rem;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background-color: var(--mantine-color-gray-3);
+}
+
+.timelineItem {
+  position: relative;
+  margin-bottom: 3rem;
+}
+
+.marker {
+  position: absolute;
+  left: calc(-2rem - 6px);
+  top: 0;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background-color: var(--mantine-color-indigo-6);
+  border: 3px solid var(--mantine-color-gray-0);
+  box-shadow: var(--mantine-shadow-md);
+}
+
+.content {
+  background-color: var(--mantine-color-white);
+}
+
+.highlight {
+  position: relative;
+  padding-left: 1rem;
+}
+
+.highlight::before {
+  content: '▸';
+  position: absolute;
+  left: 0;
+  color: var(--mantine-color-indigo-6);
+}
+
