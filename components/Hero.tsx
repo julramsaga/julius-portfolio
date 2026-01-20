@@ -41,7 +41,7 @@ export function Hero() {
             </Text>
             <Text size="lg" c="dimmed" mb="xl" maw={600} style={{ textAlign: 'center' }}>
               Crafting beautiful, user-centered digital experiences with 3+ years of expertise in
-              design and 1+ year ofdevelopment.
+              design and 1+ year of development.
             </Text>
             <Group gap="md" mb="xl" justify="center">
               <Badge size="lg" color="indigo" radius="xl">

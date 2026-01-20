@@ -63,7 +63,7 @@ export function Navbar() {
             {items}
           </Group>
 
-          <Burger opened={opened} onClick={toggle} hiddenFrom="md" size="sm" />
+          <Burger opened={opened} onClick={toggle} hiddenFrom="md" size="sm"/>
         </Group>
       </Container>
 

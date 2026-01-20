@@ -84,14 +84,14 @@ export function Contact() {
                 Let's Work Together
               </Title>
             </div>
-            <Text size="lg" c="dimmed" lh={1.75} mb="xl">
+            <Text size="lg" c="dimmed" lh={1.75} mb="xl" style={{ textAlign:'left'}}>
               I'm currently available for new projects and opportunities. Whether you have a
               project in mind or just want to chat about design and development, I'd love to hear
               from you.
             </Text>
             <Stack gap="lg" mb="xl">
               <div>
-                <Text size="xs" fw={600} c="dimmed" tt="uppercase" mb="xs" style={{ letterSpacing: '0.05em' }}>
+                <Text size="xs" fw={600} c="dimmed" tt="uppercase" mb="xs" style={{ letterSpacing: '0.05em',}}>
                   Email
                 </Text>
                 <Anchor href="mailto:julius@example.com" size="lg" c="gray.9">
@@ -99,7 +99,7 @@ export function Contact() {
                 </Anchor>
               </div>
               <div>
-                <Text size="xs" fw={600} c="dimmed" tt="uppercase" mb="xs" style={{ letterSpacing: '0.05em' }}>
+                <Text size="xs" fw={600} c="dimmed" tt="uppercase" mb="xs" style={{ letterSpacing: '0.05em',}}>
                   Availability
                 </Text>
                 <Text size="lg" c="gray.9">
@@ -107,7 +107,7 @@ export function Contact() {
                 </Text>
               </div>
               <div>
-                <Text size="xs" fw={600} c="dimmed" tt="uppercase" mb="xs" style={{ letterSpacing: '0.05em' }}>
+                <Text size="xs" fw={600} c="dimmed" tt="uppercase" mb="xs" style={{ letterSpacing: '0.05em',}}>
                   Timezone
                 </Text>
                 <Text size="lg" c="gray.9">
@@ -115,20 +115,6 @@ export function Contact() {
                 </Text>
               </div>
             </Stack>
-            <div className={classes.socialLinks}>
-              <Anchor href="#" c="dimmed" fw={500}>
-                LinkedIn
-              </Anchor>
-              <Anchor href="#" c="dimmed" fw={500}>
-                Dribbble
-              </Anchor>
-              <Anchor href="#" c="dimmed" fw={500}>
-                GitHub
-              </Anchor>
-              <Anchor href="#" c="dimmed" fw={500}>
-                Behance
-              </Anchor>
-            </div>
           </motion.div>
 
           <motion.div

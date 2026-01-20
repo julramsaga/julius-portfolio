@@ -1,4 +1,4 @@
-import { Container, Text, Box } from '@mantine/core';
+import { Container, Text, Box, Anchor } from '@mantine/core';
 import classes from './Footer.module.css';
 
 export function Footer() {
@@ -12,6 +12,20 @@ export function Footer() {
           <Text size="xs" c="dimmed">
             Designed and developed with care
           </Text>
+          <div className={classes.socialLinks}>
+              <Anchor href="#" c="dimmed" fw={500}>
+                LinkedIn
+              </Anchor>
+              <Anchor href="#" c="dimmed" fw={500}>
+                Dribbble
+              </Anchor>
+              <Anchor href="#" c="dimmed" fw={500}>
+                GitHub
+              </Anchor>
+              <Anchor href="#" c="dimmed" fw={500}>
+                Behance
+              </Anchor>
+            </div>
         </div>
       </Container>
     </Box>
