@@ -6,25 +6,25 @@ import classes from './CaseStudies.module.css';
 
 const caseStudies = [
   {
-    category: 'Product Design',
-    title: 'E-Commerce Platform Redesign',
-    description:
-      'Complete redesign of a modern e-commerce platform focusing on improved user experience, conversion optimization, and mobile-first design.',
-    tags: ['Figma', 'React', 'User Research'],
-  },
-  {
-    category: 'UX Design',
-    title: 'SaaS Dashboard Interface',
-    description:
-      'Designed and developed a comprehensive dashboard interface for a SaaS platform, improving user productivity and engagement metrics.',
-    tags: ['Figma', 'TypeScript', 'Design System'],
-  },
-  {
     category: 'Mobile App',
-    title: 'Fitness Tracking Mobile App',
+    title: 'E-Commerce Platform',
     description:
-      'End-to-end design and development of a fitness tracking mobile application with intuitive UI and seamless user onboarding.',
-    tags: ['Figma', 'React Native', 'User Testing'],
+      'Complete design of a modern e-commerce platform focusing on improved user experience, conversion optimization, and mobile-first design.',
+    tags: ['Figma', 'Mantine Library', 'User Research', 'Google 3 Design System', 'UX | UI Design', 'Zeplin', 'Design Specification'],
+  },
+  {
+    category: 'Web Design',
+    title: 'Invoice UI',
+    description:
+      'DThis Invoice UI is designed to mirror the familiarity of an Excel-style layout during the review phase, helping users validate data quickly and confidently. To reduce cognitive overload, the workflow is broken into a clear, step-by-step stepper, guiding users through each stage of the process without overwhelming them.',
+    tags: ['Figma', 'Mantine Library', 'Design System', 'UX | UI Design', 'User Research'],
+  },
+  {
+    category: 'Mobile App | Web App',
+    title: 'Nucleus CRM',
+    description:
+      'Nucleus CRM is a centralized platform designed to help teams manage leads, customers, and tasks efficiently. It simplifies complex workflows by organizing the entire customer journey from lead capture to conversion into a clear, easy-to-use system.',
+    tags: ['Figma', 'React', 'User Interface', 'User Experience', 'Jira', 'Miro', 'Zeplin', 'Material UI Library'],
   },
 ];
 

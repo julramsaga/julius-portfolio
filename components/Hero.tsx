@@ -27,10 +27,11 @@ export function Hero() {
                 Hello, I'm
               </Text>
               <Text
+                size='4rem' fw={400}
                 component="span"
                 className={classes.name}
                 variant="gradient"
-                gradient={{ from: 'indigo', to: 'indigo', deg: 135 }}
+                gradient={{ from: 'indigo', to: 'red', deg: 135 }}
               >
                 Julius Ramon Saga
               </Text>
@@ -39,8 +40,8 @@ export function Hero() {
               UX/UI Designer • Product Designer • Frontend / Full-Stack Developer
             </Text>
             <Text size="lg" c="dimmed" mb="xl" maw={600} style={{ textAlign: 'center' }}>
-              Crafting beautiful, user-centered digital experiences with 2+ years of expertise in
-              design and development.
+              Crafting beautiful, user-centered digital experiences with 3+ years of expertise in
+              design and 1+ year ofdevelopment.
             </Text>
             <Group gap="md" mb="xl" justify="center">
               <Badge size="lg" color="indigo" radius="xl">

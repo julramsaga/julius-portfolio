@@ -56,7 +56,7 @@ export function Navbar() {
         boxShadow: scrolled ? '0 4px 6px -1px rgba(0, 0, 0, 0.1)' : 'none',
       }}
     >
-      <Container size="xl" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+      <Container size="xl" style={{ display: 'flex', justifyContent: 'right', alignItems: 'center' }}>
         <Group justify="space-between" h={70}>
 
           <Group gap="xl" visibleFrom="md">
@@ -67,7 +67,7 @@ export function Navbar() {
         </Group>
       </Container>
 
-      <Drawer opened={opened} onClose={close} title="Menu" position="right" padding="md">
+      <Drawer opened={opened} onClose={close} title="Menu" position="left" padding="xl">
         <Stack gap="md">{items}</Stack>
       </Drawer>
     </Box>
