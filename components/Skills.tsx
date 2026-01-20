@@ -15,7 +15,7 @@ const skillCategories = [
   },
   {
     title: 'Backend & Tools',
-    skills: ['Node.js', 'Express', 'MongoDB', 'PostgreSQL', 'Git', 'Webpack', 'Vite', 'REST APIs'],
+    skills: ['Node.js', 'Express', 'MongoDB', 'Git', 'Webpack', 'Vite',],
   },
 ];
 

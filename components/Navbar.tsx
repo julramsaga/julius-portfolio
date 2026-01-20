@@ -6,6 +6,7 @@ import { useDisclosure } from '@mantine/hooks';
 import classes from './Navbar.module.css';
 
 const links = [
+  { link: '#home', label: 'Home' },
   { link: '#about', label: 'About' },
   { link: '#skills', label: 'Skills' },
   { link: '#case-studies', label: 'Case Studies' },
@@ -55,17 +56,8 @@ export function Navbar() {
         boxShadow: scrolled ? '0 4px 6px -1px rgba(0, 0, 0, 0.1)' : 'none',
       }}
     >
-      <Container size="xl">
+      <Container size="xl" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
         <Group justify="space-between" h={70}>
-          <Anchor
-            href="#home"
-            onClick={(e) => handleLinkClick(e, '#home')}
-            className={classes.logo}
-            fw={700}
-            size="xl"
-          >
-            JRS
-          </Anchor>
 
           <Group gap="xl" visibleFrom="md">
             {items}

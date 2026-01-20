@@ -5,8 +5,8 @@ import { motion } from 'framer-motion';
 import classes from './About.module.css';
 
 const stats = [
-  { value: '2+', label: 'Years Experience' },
-  { value: '50+', label: 'Projects Completed' },
+  { value: '3+', label: 'Years Experience' },
+  { value: '3+', label: 'Projects Completed' },
   { value: '100%', label: 'User-Focused' },
 ];
 

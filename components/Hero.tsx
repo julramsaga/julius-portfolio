@@ -2,16 +2,23 @@
 
 import { Container, Title, Text, Group, Button, Badge, Box } from '@mantine/core';
 import { motion } from 'framer-motion';
+import { useEffect, useState } from 'react';
 import classes from './Hero.module.css';
 
 export function Hero() {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   return (
     <Box component="section" id="home" className={classes.hero}>
       <Container size="xl">
         <div className={classes.content}>
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            initial={mounted ? { opacity: 0, y: 20 } : false}
+            animate={mounted ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             className={classes.text}
           >
@@ -28,14 +35,14 @@ export function Hero() {
                 Julius Ramon Saga
               </Text>
             </Title>
-            <Text size="xl" fw={500} c="dimmed" mb="md">
+            <Text size="xl" fw={500} c="dimmed" mb="md" style={{ textAlign: 'center' }}>
               UX/UI Designer • Product Designer • Frontend / Full-Stack Developer
             </Text>
-            <Text size="lg" c="dimmed" mb="xl" maw={540}>
+            <Text size="lg" c="dimmed" mb="xl" maw={600} style={{ textAlign: 'center' }}>
               Crafting beautiful, user-centered digital experiences with 2+ years of expertise in
               design and development.
             </Text>
-            <Group gap="md" mb="xl">
+            <Group gap="md" mb="xl" justify="center">
               <Badge size="lg" color="indigo" radius="xl">
                 Available Immediately
               </Badge>
@@ -43,7 +50,7 @@ export function Hero() {
                 US Timezone
               </Badge>
             </Group>
-            <Group gap="lg">
+            <Group gap="lg" justify="center">
               <Button
                 component="a"
                 href="#contact"
@@ -65,14 +72,6 @@ export function Hero() {
                 View Work
               </Button>
             </Group>
-          </motion.div>
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className={classes.visual}
-          >
-            <div className="gradient-orb" />
           </motion.div>
         </div>
       </Container>
