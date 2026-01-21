@@ -1,16 +1,110 @@
 'use client';
 
-import { Container, Title, Text, Group, Button, Badge, Box } from '@mantine/core';
+import {
+  Container,
+  Title,
+  Text,
+  Group,
+  Button,
+  Badge,
+  Box,
+  TextInput,
+  Stack,
+  Card,
+  ActionIcon,
+  Modal,
+} from '@mantine/core';
+import { DateInput } from '@mantine/dates';
 import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
 import classes from './Hero.module.css';
+import { IconTrash, IconEdit } from '@tabler/icons-react';
+
+/* =====================
+   TYPES (UPDATED)
+===================== */
+type CrudItem = {
+  id: number;
+  email: string;
+  firstname: string;
+  lastName: string;
+};
 
 export function Hero() {
-  const [mounted, setMounted] = useState(false);
+  const [mounted, setMounted] = useState<boolean>(false);
+
+  // CRUD state (FIXED TYPES)
+  const [items, setItems] = useState<CrudItem[]>([]);
+  const [editingId, setEditingId] = useState<number | null>(null);
+
+  // MODAL STATE (ADDED)
+  const [opened, setOpened] = useState<boolean>(false);
+
+  // FORM STATE (ADDED)
+  const [email, setEmail] = useState<string>('');
+  const [firstname, setfirstname] = useState<string>('');
+  const [lastName, setlastName] = useState<string>('');
+  const [emailError, setEmailError] = useState<string | null>(null);
+
 
   useEffect(() => {
     setMounted(true);
   }, []);
+
+  /* =====================
+     SAVE (CREATE / UPDATE)
+  ===================== */
+  const saveItem = (): void => {
+    // check if fields are empty
+    if (!email || !firstname || !lastName) return;
+  
+    // email validation
+    if (!email.includes('@')) {
+      setEmailError('Email must contain @');
+      return; // stop saving
+    }
+  
+    const newItem: CrudItem = {
+      id: editingId ?? Date.now(),
+      email,
+      firstname,
+      lastName,
+    };
+  
+    if (editingId !== null) {
+      setItems((prev) =>
+        prev.map((item) => (item.id === editingId ? newItem : item))
+      );
+    } else {
+      setItems((prev) => [...prev, newItem]);
+    }
+  
+    // reset form and error
+    setEmail('');
+    setfirstname('');
+    setlastName('');
+    setEditingId(null);
+    setEmailError(null); // reset error
+    setOpened(false);
+  };
+  
+  /* =====================
+     EDIT
+  ===================== */
+  const editItem = (item: CrudItem): void => {
+    setEmail(item.email);
+    setfirstname(item.firstname);
+    setlastName(item.lastName);
+    setEditingId(item.id);
+    setOpened(true);
+  };
+
+  /* =====================
+     DELETE
+  ===================== */
+  const deleteItem = (id: number): void => {
+    setItems((prev) => prev.filter((item) => item.id !== id));
+  };
 
   return (
     <Box component="section" id="home" className={classes.hero}>
@@ -18,7 +112,7 @@ export function Hero() {
         <div className={classes.content}>
           <motion.div
             initial={mounted ? { opacity: 0, y: 20 } : false}
-            animate={mounted ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             className={classes.text}
           >
@@ -27,7 +121,8 @@ export function Hero() {
                 Hello, I'm
               </Text>
               <Text
-                size='4rem' fw={400}
+                size="4rem"
+                fw={400}
                 component="span"
                 className={classes.name}
                 variant="gradient"
@@ -36,13 +131,16 @@ export function Hero() {
                 Julius Ramon Saga
               </Text>
             </Title>
-            <Text size="xl" fw={500} c="dimmed" mb="md" style={{ textAlign: 'center' }}>
+
+            <Text size="xl" fw={500} c="dimmed" mb="md" ta="center">
               UX/UI Designer • Product Designer • Frontend / Full-Stack Developer
             </Text>
-            <Text size="lg" c="dimmed" mb="xl" maw={600} style={{ textAlign: 'center' }}>
-              Crafting beautiful, user-centered digital experiences with 3+ years of expertise in
-              design and 1+ year of development.
+
+            <Text size="lg" c="dimmed" mb="xl" maw={600} ta="center">
+              Crafting beautiful, user-centered digital experiences with 3+ years
+              of expertise in design and 1+ year of development.
             </Text>
+
             <Group gap="md" mb="xl" justify="center">
               <Badge size="lg" color="indigo" radius="xl">
                 Available Immediately
@@ -51,6 +149,7 @@ export function Hero() {
                 US Timezone
               </Badge>
             </Group>
+
             <Group gap="lg" justify="center">
               <Button
                 component="a"
@@ -58,7 +157,6 @@ export function Hero() {
                 size="md"
                 color="indigo"
                 radius="md"
-                style={{ boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)' }}
               >
                 Get in Touch
               </Button>
@@ -73,10 +171,129 @@ export function Hero() {
                 View Work
               </Button>
             </Group>
+            <Box mt="xl" mx="auto" style={{ maxWidth: 700 }}>
+
+
+            <Card
+                shadow="sm"       // small shadow
+                radius="md"       // medium rounded corners
+                p="md"            // padding inside
+                withBorder={false} // optional, no border
+                style={{ backgroundColor: 'white' }} // optional, Card is already white by default
+              >
+                {/* Table Header */}
+                <Group px="md" py="sm" style={{ fontWeight: 600, color: 'dimgray' }}>
+                  
+                  <Box style={{ flex: 1, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                    Email
+                  </Box>
+                  <Box style={{ flex: 1, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                    First
+                  </Box>
+                  <Box style={{ flex: 1, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                    Last Name
+                  </Box>
+                  <Box style={{ width: 80, textAlign: 'center' }}></Box>
+                  <Box style={{ width: 80, textAlign: 'center' }}></Box>
+                </Group>
+
+                {/* Divider */}
+                <Box style={{ height: 1, backgroundColor: '#e0e0e0', margin: '0 16px' }} />
+
+                {/* Table Rows */}
+                {items.map((item) => (
+                  <Group
+                    key={item.id}
+                    px="md"
+                    py="sm"
+                    style={{
+                      borderRadius: 4,
+                      cursor: 'pointer',
+                      display: 'flex',
+                      alignItems: 'center',
+                    }}
+                    onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = '#f5f5f5')}
+                    onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = 'transparent')}
+                  >
+                    <Box style={{ flex: 1, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                      {item.firstname}
+                    </Box>
+                    <Box style={{ flex: 1, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                      {item.email}
+                    </Box>
+                    <Box style={{ flex: 1, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                      {item.lastName}
+                    </Box>
+                    <Box style={{ width: 80, textAlign: 'center' }}>
+                      <ActionIcon color="indigo" variant="light" onClick={() => editItem(item)}>
+                        <IconEdit size={16} />
+                      </ActionIcon>
+                    </Box>
+                    <Box style={{ width: 80, textAlign: 'center' }}>
+                      <ActionIcon color="red" variant="light" onClick={() => deleteItem(item.id)}>
+                        <IconTrash size={16} />
+                      </ActionIcon>
+                    </Box>
+                  </Group>
+                  
+                ))}
+
+                {/* Add Button */}
+                <Button
+                  color="indigo"
+                  mt="md"
+                  onClick={() => {
+                    setOpened(true);
+                    setEditingId(null);
+                    setEmail('');
+                    setfirstname('');
+                    setlastName('');
+                  }}
+                >
+                  Add User
+                </Button>
+              </Card>
+              </Box>
+            
+
+
+
+            {/* MODAL (ADDED, NO LAYOUT CHANGE) */}
+            <Modal
+              opened={opened}
+              onClose={() => setOpened(false)}
+              title={editingId !== null ? 'Edit User' : 'Add User'}
+              centered
+            >
+              <Stack>
+                <TextInput
+                  label="Email"
+                  value={email}
+                  onChange={(e) => setEmail(e.currentTarget.value)}
+                  error={emailError}
+                />
+
+                <TextInput
+                  label="firsname"
+                  value={firstname}
+                  onChange={(e) => setfirstname(e.currentTarget.value)}
+                />
+
+                <TextInput
+                  label="last Name"
+                  value={lastName}
+                  onChange={(e) => setlastName(e.currentTarget.value)}
+                />
+
+                <Button onClick={saveItem} color="indigo">
+                  Save
+                </Button>
+              </Stack>
+            </Modal>
+
           </motion.div>
         </div>
       </Container>
     </Box>
   );
 }
-
