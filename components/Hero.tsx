@@ -14,7 +14,6 @@ import {
   ActionIcon,
   Modal,
 } from '@mantine/core';
-import { DateInput } from '@mantine/dates';
 import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
 import classes from './Hero.module.css';
