@@ -158,7 +158,7 @@ export function Hero() {
                 color="indigo"
                 radius="md"
               >
-                Get in Touch
+                Get In Touch
               </Button>
               <Button
                 component="a"
