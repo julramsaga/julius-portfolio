@@ -4,9 +4,12 @@
 }
 
 .card {
+  display: flex;
+  flex-direction: column;
   overflow: hidden;
   transition: transform 300ms ease, box-shadow 300ms ease;
 }
+
 
 .card:hover {
   transform: translateY(-8px);
@@ -14,11 +17,14 @@
 }
 
 .image {
+  position: relative;
   width: 100%;
   height: 240px;
   background-color: var(--mantine-color-gray-2);
   overflow: hidden;
+  flex-shrink: 0;
 }
+
 
 .imagePlaceholder {
   width: 100%;

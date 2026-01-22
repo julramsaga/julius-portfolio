@@ -3,23 +3,28 @@
 import { Container, Title, Text, SimpleGrid, Card, Anchor, Box } from '@mantine/core';
 import { motion } from 'framer-motion';
 import classes from './Projects.module.css';
+import Image from 'next/image';
 
 const projects = [
   {
     title: 'Design System Library',
     description: 'Comprehensive design system with reusable components',
+    image: '/case-studies/image 1.png',
   },
   {
     title: 'Portfolio Website',
     description: 'Modern, responsive portfolio with smooth animations',
+    image: '/case-studies/image 2.png',
   },
   {
     title: 'Landing Page Design',
     description: 'High-converting landing page with A/B testing',
+    image: '/case-studies/image 3.png',
   },
   {
     title: 'Web Application',
     description: 'Full-stack web app with modern architecture',
+    image: '/case-studies/image 2.png',
   },
 ];
 
@@ -44,7 +49,12 @@ export function Projects() {
             >
               <Card padding={0} radius="md" className={classes.card}>
                 <div className={classes.image}>
-                  <div className={classes.imagePlaceholder} />
+                  <Image
+                    src={project.image}
+                    alt={project.title}
+                    fill
+                    style={{ objectFit: 'cover' }}
+                  />
                 </div>
                 <div className={classes.info}>
                   <Title order={3} size="xl" fw={600} mb="sm">
