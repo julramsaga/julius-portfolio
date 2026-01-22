@@ -22,7 +22,7 @@ export default function RootLayout({
       </head>
       <body>
         <MantineProvider theme={theme}>
-          <Notifications position="top-right" />
+          <Notifications position="top-right" zIndex={9999}/>
           {children}
         </MantineProvider>
       </body>
