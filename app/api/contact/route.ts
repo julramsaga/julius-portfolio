@@ -1,11 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server';
+import nodemailer from 'nodemailer';
 
 export async function POST(request: NextRequest) {
   try {
-    const body = await request.json();
-    const { name, email, subject, message } = body;
+    const { name, email, subject, message } = await request.json();
 
-    // Validate required fields
     if (!name || !email || !subject || !message) {
       return NextResponse.json(
         { error: 'All fields are required' },
@@ -13,33 +12,38 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Here you would typically:
-    // 1. Send an email using a service like SendGrid, Resend, or Nodemailer
-    // 2. Save to a database
-    // 3. Send a notification
-    
-    // Example: Log the data (replace with actual email/database logic)
-    console.log('Contact form submission:', {
-      name,
-      email,
-      subject,
-      message,
-      timestamp: new Date().toISOString(),
+    const transporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+        user: process.env.GMAIL_USER,
+        pass: process.env.GMAIL_PASS,
+      },
     });
 
-    // Simulate API call delay
-    await new Promise((resolve) => setTimeout(resolve, 500));
+    await transporter.sendMail({
+      from: `"Contact Form" <${process.env.GMAIL_USER}>`,
+      to: process.env.GMAIL_USER, // receive email yourself
+      replyTo: email,
+      subject: `New Contact: ${subject}`,
+      html: `
+        <h2>New Contact Form Submission</h2>
+        <p><strong>Name:</strong> ${name}</p>
+        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Subject:</strong> ${subject}</p>
+        <p><strong>Message:</strong></p>
+        <p>${message.replace(/\n/g, '<br />')}</p>
+      `,
+    });
 
     return NextResponse.json(
       { message: 'Message sent successfully' },
       { status: 200 }
     );
   } catch (error) {
-    console.error('Contact form error:', error);
+    console.error('Email error:', error);
     return NextResponse.json(
       { error: 'Failed to send message' },
       { status: 500 }
     );
   }
 }
-
