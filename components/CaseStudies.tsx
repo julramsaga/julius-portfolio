@@ -21,7 +21,7 @@ const caseStudies = [
     title: 'E-Commerce Platform',
     description:
       'Complete design of a modern e-commerce platform focusing on improved user experience, conversion optimization, and mobile-first design.',
-    image: '/case-studies/image 1.png',
+    image: '/case-studies/ecommerce.png',
     tags: [
       'Figma',
       'Mantine Library',
@@ -37,7 +37,7 @@ const caseStudies = [
     title: 'Invoice UI',
     description:
       'This Invoice UI is designed to mirror the familiarity of an Excel-style layout during the review phase, helping users validate data quickly and confidently.',
-    image: '/case-studies/image 2.png',
+    image: '/case-studies/invoice.png',
     tags: [
       'Figma',
       'Mantine Library',
@@ -51,7 +51,7 @@ const caseStudies = [
     title: 'Nucleus CRM',
     description:
       'Nucleus CRM is a centralized platform designed to help teams manage leads, customers, and tasks efficiently.',
-    image: '/case-studies/image 3.png',
+    image: '/case-studies/nucleus 1.png',
     tags: [
       'Figma',
       'React',
