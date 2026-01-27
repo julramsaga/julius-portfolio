@@ -13,6 +13,7 @@ import {
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import classes from './CaseStudies.module.css';
+import { link } from 'fs';
 
 
 const caseStudies = [
@@ -31,6 +32,7 @@ const caseStudies = [
       'Zeplin',
       'Design Specification',
     ],
+    figmaLink:'https://www.figma.com/design/GlABOn45wCBYPxFAbzX1u7/CODEBILITY?node-id=2-2&p=f&t=8DHhphke5Ic07GCL-0',
   },
   {
     category: 'Web Design',
@@ -45,6 +47,7 @@ const caseStudies = [
       'UX | UI Design',
       'User Research',
     ],
+    figmaLink:'https://www.figma.com/design/CZYdyFmFkRAfyWtIC2auZl/Julius-Saga--M-Component-?node-id=1108-33&p=f&t=5n7uRRyrwlZKHRxR-0',
   },
   {
     category: 'Mobile App | Web App',
@@ -62,6 +65,7 @@ const caseStudies = [
       'Zeplin',
       'Material UI Library',
     ],
+    figmaLink:'https://www.figma.com/design/0mnp15QbkKh1xwNE6T6brp/Q4.2025?t=zDqWL7NHwKp25TLU-0',
   },
 ];
 
@@ -120,7 +124,9 @@ export function CaseStudies() {
                   </div>
 
                   <Anchor
-                    href="#"
+                    href={study.figmaLink}
+                    target="blank"
+                    rel="noopener noreffer"
                     size="sm"
                     fw={600}
                     c="indigo"
