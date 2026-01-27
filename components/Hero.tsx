@@ -19,9 +19,6 @@ import { useEffect, useState } from 'react';
 import classes from './Hero.module.css';
 import { IconTrash, IconEdit } from '@tabler/icons-react';
 
-/* =====================
-   TYPES (UPDATED)
-===================== */
 type CrudItem = {
   id: number;
   email: string;
@@ -32,14 +29,14 @@ type CrudItem = {
 export function Hero() {
   const [mounted, setMounted] = useState<boolean>(false);
 
-  // CRUD state (FIXED TYPES)
+
   const [items, setItems] = useState<CrudItem[]>([]);
   const [editingId, setEditingId] = useState<number | null>(null);
 
-  // MODAL STATE (ADDED)
+
   const [opened, setOpened] = useState<boolean>(false);
 
-  // FORM STATE (ADDED)
+
   const [email, setEmail] = useState<string>('');
   const [firstname, setfirstname] = useState<string>('');
   const [lastName, setlastName] = useState<string>('');
@@ -50,17 +47,13 @@ export function Hero() {
     setMounted(true);
   }, []);
 
-  /* =====================
-     SAVE (CREATE / UPDATE)
-  ===================== */
+
   const saveItem = (): void => {
-    // check if fields are empty
     if (!email || !firstname || !lastName) return;
   
-    // email validation
     if (!email.includes('@')) {
       setEmailError('Email must contain @');
-      return; // stop saving
+      return; 
     }
   
     const newItem: CrudItem = {
@@ -78,18 +71,14 @@ export function Hero() {
       setItems((prev) => [...prev, newItem]);
     }
   
-    // reset form and error
     setEmail('');
     setfirstname('');
     setlastName('');
     setEditingId(null);
-    setEmailError(null); // reset error
+    setEmailError(null);
     setOpened(false);
   };
-  
-  /* =====================
-     EDIT
-  ===================== */
+
   const editItem = (item: CrudItem): void => {
     setEmail(item.email);
     setfirstname(item.firstname);
@@ -98,9 +87,6 @@ export function Hero() {
     setOpened(true);
   };
 
-  /* =====================
-     DELETE
-  ===================== */
   const deleteItem = (id: number): void => {
     setItems((prev) => prev.filter((item) => item.id !== id));
   };
@@ -174,13 +160,13 @@ export function Hero() {
 
 
             <Card
-                shadow="sm"       // small shadow
-                radius="md"       // medium rounded corners
-                p="md"            // padding inside
-                withBorder={false} // optional, no border
-                style={{ backgroundColor: 'white' }} // optional, Card is already white by default
+                shadow="sm"  
+                radius="md"       
+                p="md"            
+                withBorder={false}
+                style={{ backgroundColor: 'white' }} 
               >
-                {/* Table Header */}
+                
                 <Group px="md" py="sm" style={{ fontWeight: 600, color: 'dimgray' }}>
                   
                   <Box style={{ flex: 1, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
@@ -196,10 +182,10 @@ export function Hero() {
                   <Box style={{ width: 80, textAlign: 'center' }}></Box>
                 </Group>
 
-                {/* Divider */}
+                
                 <Box style={{ height: 1, backgroundColor: '#e0e0e0', margin: '0 16px' }} />
 
-                {/* Table Rows */}
+              
                 {items.map((item) => (
                   <Group
                     key={item.id}
@@ -237,7 +223,7 @@ export function Hero() {
                   
                 ))}
 
-                {/* Add Button */}
+                
                 <Button
                   color="indigo"
                   mt="md"
@@ -257,7 +243,7 @@ export function Hero() {
 
 
 
-            {/* MODAL (ADDED, NO LAYOUT CHANGE) */}
+           
             <Modal
               opened={opened}
               onClose={() => setOpened(false)}

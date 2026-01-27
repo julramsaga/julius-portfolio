@@ -54,19 +54,33 @@ export function Navbar() {
       style={{
         backgroundColor: scrolled ? 'rgba(255, 255, 255, 0.95)' : 'rgba(255, 255, 255, 0.95)',
         boxShadow: scrolled ? '0 4px 6px -1px rgba(0, 0, 0, 0.1)' : 'none',
+        position: 'fixed',
+        width: '100%',
+        top: 0,
+        zIndex: 999,
       }}
     >
       <Container size="xl" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-        <Group justify="space-between" h={70}>
+        <Group justify="center" h={70} style={{ width: '100%', position: 'relative' }}>
+          {/* Mobile Burger (Left Side) */}
+          <Box
+            style={{
+              position: 'absolute',
+              left: 0,
+            }}
+            hiddenFrom="md"
+          >
+            <Burger opened={opened} onClick={toggle} size="sm" />
+          </Box>
 
+          {/* Desktop Links (Centered) */}
           <Group gap="xl" visibleFrom="md">
             {items}
           </Group>
-
-          <Burger opened={opened} onClick={toggle} hiddenFrom="md" size="sm"/>
         </Group>
       </Container>
 
+      {/* Mobile Drawer */}
       <Drawer opened={opened} onClose={close} title="Menu" position="left" padding="xl">
         <Stack gap="md">{items}</Stack>
       </Drawer>
