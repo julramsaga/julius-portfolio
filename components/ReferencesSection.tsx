@@ -65,6 +65,13 @@ const references: Reference[] = [
     email: 'devellescyreljames@gmail.com',
     linkedin: 'https://www.linkedin.com/in/cyrel-james-develles-352779332/',
   },
+  {
+    name: 'Earl Dominic Biboso',
+    role: 'Software QA Engineer',
+    company: 'NUCLEUS',
+    phone:'+63 995 883 5733',
+    linkedin: 'https://www.linkedin.com/in/earl-dominic-t-biboso-5b2426239/',
+  },
   
 ];
 
