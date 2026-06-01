@@ -4,8 +4,13 @@ import './globals.css';
 import { MantineProvider, ColorSchemeScript } from '@mantine/core';
 import { Notifications } from '@mantine/notifications';
 import { theme } from './theme';
+import type { Metadata } from 'next'; // 👈 add this
 
-export const metadata = {
+export const metadata: Metadata = {  // 👈 add Metadata type
+  metadataBase: new URL('https://julius-ramon-saga.vercel.app'),
+  alternates: {
+    canonical: '/',                   // 👈 add this
+  },
   title: 'Julius Ramon Saga | UX/UI Designer & Developer',
   description: 'UX/UI Designer, Product Designer, Frontend / Full-Stack Developer Portfolio',
 };
@@ -29,4 +34,3 @@ export default function RootLayout({
     </html>
   );
 }
-
