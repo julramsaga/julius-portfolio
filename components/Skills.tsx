@@ -2,7 +2,7 @@
 
 import { Container, Title, Text, SimpleGrid, Card, Badge, Box } from '@mantine/core';
 import { motion } from 'framer-motion';
-import classes from './Skills.module.css';
+import classes from './styles/Skills.module.css';
 
 const skillCategories = [
   {

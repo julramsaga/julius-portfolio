@@ -16,9 +16,9 @@ export const theme = createTheme({
       '#312e81',
     ],
   },
-  fontFamily: 'Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif',
+  fontFamily: 'Roboto, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif',
   headings: {
-    fontFamily: 'Playfair Display, serif',
+    fontFamily: '"Helvetica Neue", Helvetica, Arial, sans-serif',
     fontWeight: '700',
   },
   defaultRadius: 'md',

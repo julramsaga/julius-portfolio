@@ -2,7 +2,7 @@
 
 import { Container, Title, Text, SimpleGrid, Card, Box } from '@mantine/core';
 import { motion } from 'framer-motion';
-import classes from './About.module.css';
+import classes from './styles/About.module.css';
 
 const stats = [
   { value: '3+', label: 'Years Experience' },

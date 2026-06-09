@@ -12,7 +12,7 @@ import {
 } from '@mantine/core';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-import classes from './CaseStudies.module.css';
+import classes from './styles/CaseStudies.module.css';
 import { link } from 'fs';
 
 
@@ -97,7 +97,6 @@ export function CaseStudies() {
                     src={study.image}
                     alt={study.title}
                     fill
-                    style={{ objectFit: 'cover' }}
                   />
                 </div>
 

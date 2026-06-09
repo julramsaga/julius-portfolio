@@ -10,7 +10,7 @@ import {
   Anchor,
 } from '@mantine/core';
 import { motion } from 'framer-motion';
-import classes from './ReferencesSection.module.css';
+import classes from './styles/ReferencesSection.module.css';
 
 type Reference = {
   name: string;

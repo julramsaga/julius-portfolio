@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import { Container, Group, Burger, Drawer, Stack, Anchor, Box } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
-import classes from './Navbar.module.css';
+import classes from './styles/Navbar.module.css';
 
 const links = [
   { link: '#home', label: 'Home' },
@@ -43,33 +43,17 @@ export function Navbar() {
       href={link.link}
       onClick={(e) => handleLinkClick(e, link.link)}
       className={classes.link}
+      underline="never"
     >
       {link.label}
     </Anchor>
   ));
 
   return (
-    <Box
-      className={classes.navbar}
-      style={{
-        backgroundColor: scrolled ? 'rgba(255, 255, 255, 0.95)' : 'rgba(255, 255, 255, 0.95)',
-        boxShadow: scrolled ? '0 4px 6px -1px rgba(0, 0, 0, 0.1)' : 'none',
-        position: 'fixed',
-        width: '100%',
-        top: 0,
-        zIndex: 999,
-      }}
-    >
-      <Container size="xl" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-        <Group justify="center" h={70} style={{ width: '100%', position: 'relative' }}>
-          {/* Mobile Burger (Left Side) */}
-          <Box
-            style={{
-              position: 'absolute',
-              left: 0,
-            }}
-            hiddenFrom="md"
-          >
+    <Box className={`${classes.navbar} ${scrolled ? classes.scrolled : ''}`}>
+      <Container size="xl" className={classes.containerInner}>
+        <Group justify="center" h={70} className={classes.navGroup}>
+          <Box className={classes.burgerWrapper} hiddenFrom="md">
             <Burger opened={opened} onClick={toggle} size="sm" />
           </Box>
 

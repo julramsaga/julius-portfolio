@@ -16,7 +16,7 @@ import {
 } from '@mantine/core';
 import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
-import classes from './Hero.module.css';
+import classes from './styles/Hero.module.css';
 import { IconTrash, IconEdit } from '@tabler/icons-react';
 
 type CrudItem = {
@@ -156,71 +156,45 @@ export function Hero() {
                 View Work
               </Button>
             </Group>
-            <Box mt="xl" mx="auto" style={{ maxWidth: 700 }}>
-
-
+            <Box className={classes.crudWrapper}>
             <Card
-                shadow="sm"  
-                radius="md"       
-                p="md"            
+                shadow="sm"
+                radius="md"
+                p="md"
                 withBorder={false}
-                style={{ backgroundColor: 'white' }} 
+                className={classes.crudCard}
               >
-                
-                <Group px="md" py="sm" style={{ fontWeight: 600, color: 'dimgray' }}>
-                  
-                  <Box style={{ flex: 1, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-                    Email
-                  </Box>
-                  <Box style={{ flex: 1, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-                    First
-                  </Box>
-                  <Box style={{ flex: 1, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-                    Last Name
-                  </Box>
-                  <Box style={{ width: 80, textAlign: 'center' }}></Box>
-                  <Box style={{ width: 80, textAlign: 'center' }}></Box>
+                <Group px="md" py="sm" className={classes.crudHeader}>
+                  <Box className={classes.crudCell}>Email</Box>
+                  <Box className={classes.crudCell}>First</Box>
+                  <Box className={classes.crudCell}>Last Name</Box>
+                  <Box className={classes.crudActionCell} />
+                  <Box className={classes.crudActionCell} />
                 </Group>
 
-                
-                <Box style={{ height: 1, backgroundColor: '#e0e0e0', margin: '0 16px' }} />
+                <Box className={classes.crudDivider} />
 
-              
                 {items.map((item) => (
                   <Group
                     key={item.id}
                     px="md"
                     py="sm"
-                    style={{
-                      borderRadius: 4,
-                      cursor: 'pointer',
-                      display: 'flex',
-                      alignItems: 'center',
-                    }}
-                    onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = '#f5f5f5')}
-                    onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = 'transparent')}
+                    className={classes.crudRow}
                   >
-                    <Box style={{ flex: 1, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-                      {item.firstname}
-                    </Box>
-                    <Box style={{ flex: 1, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-                      {item.email}
-                    </Box>
-                    <Box style={{ flex: 1, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-                      {item.lastName}
-                    </Box>
-                    <Box style={{ width: 80, textAlign: 'center' }}>
+                    <Box className={classes.crudCell}>{item.firstname}</Box>
+                    <Box className={classes.crudCell}>{item.email}</Box>
+                    <Box className={classes.crudCell}>{item.lastName}</Box>
+                    <Box className={classes.crudActionCell}>
                       <ActionIcon color="indigo" variant="light" onClick={() => editItem(item)}>
                         <IconEdit size={16} />
                       </ActionIcon>
                     </Box>
-                    <Box style={{ width: 80, textAlign: 'center' }}>
+                    <Box className={classes.crudActionCell}>
                       <ActionIcon color="red" variant="light" onClick={() => deleteItem(item.id)}>
                         <IconTrash size={16} />
                       </ActionIcon>
                     </Box>
                   </Group>
-                  
                 ))}
 
                 

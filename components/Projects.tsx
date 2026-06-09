@@ -2,7 +2,7 @@
 
 import { Container, Title, Text, SimpleGrid, Card, Anchor, Box } from '@mantine/core';
 import { motion } from 'framer-motion';
-import classes from './Projects.module.css';
+import classes from './styles/Projects.module.css';
 import Image from 'next/image';
 
 const projects = [
@@ -69,7 +69,6 @@ export function Projects() {
                     src={project.image}
                     alt={project.title}
                     fill
-                    style={{ objectFit: 'cover', objectPosition:'top' }}
                   />
                 </div>
                 <div className={classes.info}>

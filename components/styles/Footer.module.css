@@ -15,6 +15,5 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 24px; /* spacing between links */
+  gap: 24px;
 }
-

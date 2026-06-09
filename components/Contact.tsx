@@ -16,7 +16,7 @@ import {
 import { useForm } from '@mantine/form';
 import { notifications } from '@mantine/notifications';
 import { motion } from 'framer-motion';
-import classes from './Contact.module.css';
+import classes from './styles/Contact.module.css';
 
 export function Contact() {
   const [loading, setLoading] = useState(false);
@@ -47,20 +47,25 @@ export function Contact() {
         body: JSON.stringify(values),
       });
 
+      const data = await response.json().catch(() => ({}));
+
       if (response.ok) {
         notifications.show({
           title: 'Success!',
-          message: "Your message has been sent. I'll get back to you soon!",
+          message: data.message ?? "Your message has been sent. I'll get back to you soon!",
           color: 'green',
         });
         form.reset();
       } else {
-        throw new Error('Failed to send message');
+        throw new Error(data.error ?? 'Failed to send message');
       }
     } catch (error) {
       notifications.show({
         title: 'Error',
-        message: 'Failed to send message. Please try again later.',
+        message:
+          error instanceof Error
+            ? error.message
+            : 'Failed to send message. Please try again later.',
         color: 'red',
       });
     } finally {
@@ -78,20 +83,20 @@ export function Contact() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <div className="section-header" style={{ textAlign: 'left' }}>
+            <div className={`section-header ${classes.infoHeader}`}>
               <Text className="section-label">Contact</Text>
-              <Title order={2} className="section-title" style={{ textAlign: 'left' }}>
+              <Title order={2} className={`section-title ${classes.infoTitle}`}>
                 Let's Work Together
               </Title>
             </div>
-            <Text size="lg" c="dimmed" lh={1.75} mb="xl" style={{ textAlign:'left'}}>
+            <Text size="lg" c="dimmed" lh={1.75} mb="xl" className={classes.infoDescription}>
               I'm currently available for new projects and opportunities. Whether you have a
               project in mind or just want to chat about design and development, I'd love to hear
               from you.
             </Text>
             <Stack gap="lg" mb="xl">
               <div>
-                <Text size="xs" fw={600} c="dimmed" tt="uppercase" mb="xs" style={{ letterSpacing: '0.05em',}}>
+                <Text size="xs" fw={600} c="dimmed" tt="uppercase" mb="xs" className={classes.fieldLabel}>
                   Email
                 </Text>
                 <Anchor href="mailto:julius@example.com" size="lg" c="gray.9">
@@ -99,7 +104,7 @@ export function Contact() {
                 </Anchor>
               </div>
               <div>
-                <Text size="xs" fw={600} c="dimmed" tt="uppercase" mb="xs" style={{ letterSpacing: '0.05em',}}>
+                <Text size="xs" fw={600} c="dimmed" tt="uppercase" mb="xs" className={classes.fieldLabel}>
                   Availability
                 </Text>
                 <Text size="lg" c="gray.9">
@@ -107,7 +112,7 @@ export function Contact() {
                 </Text>
               </div>
               <div>
-                <Text size="xs" fw={600} c="dimmed" tt="uppercase" mb="xs" style={{ letterSpacing: '0.05em',}}>
+                <Text size="xs" fw={600} c="dimmed" tt="uppercase" mb="xs" className={classes.fieldLabel}>
                   Timezone
                 </Text>
                 <Text size="lg" c="gray.9">
@@ -158,7 +163,7 @@ export function Contact() {
                     color="indigo"
                     radius="md"
                     loading={loading}
-                    style={{ boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)' }}
+                    className={classes.submitButton}
                   >
                     Send Message
                   </Button>

@@ -2,7 +2,7 @@
 
 import { Container, Title, Text, Box, List, Card } from '@mantine/core';
 import { motion } from 'framer-motion';
-import classes from './Experience.module.css';
+import classes from './styles/Experience.module.css';
 
 const experiences = [
   {

@@ -14,12 +14,15 @@
     "@mantine/hooks": "^7.0.0",
     "@mantine/notifications": "^7.0.0",
     "@tabler/icons-react": "^2.40.0",
+    "@types/three": "^0.184.1",
     "framer-motion": "^10.16.0",
+    "gsap": "^3.15.0",
     "next": "^14.0.0",
     "nodemailer": "^7.0.12",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "resend": "^6.8.0"
+    "resend": "^6.8.0",
+    "three": "^0.184.0"
   },
   "devDependencies": {
     "@types/node": "^20.0.0",

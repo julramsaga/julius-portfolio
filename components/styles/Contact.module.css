@@ -2,11 +2,31 @@
   padding: var(--section-padding);
 }
 
+.infoHeader {
+  text-align: left;
+}
+
+.infoTitle {
+  text-align: left;
+}
+
+.infoDescription {
+  text-align: left;
+}
+
+.fieldLabel {
+  letter-spacing: 0.05em;
+}
+
 .formWrapper {
   background-color: var(--mantine-color-gray-0);
   padding: 1.5rem;
   border-radius: 1rem;
   box-shadow: var(--mantine-shadow-lg);
+}
+
+.submitButton {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
 }
 
 .socialLinks {
@@ -23,4 +43,3 @@
 .socialLinks a:hover {
   color: var(--mantine-color-indigo-6);
 }
-

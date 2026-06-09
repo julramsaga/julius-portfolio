@@ -1,12 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { Resend } from 'resend';
 
-// 🔒 Fail fast if env is missing (production-safe)
-if (!process.env.RESEND_API_KEY) {
-  throw new Error('RESEND_API_KEY is not defined');
+function getResendClient() {
+  const apiKey = process.env.RESEND_API_KEY;
+  if (!apiKey) return null;
+  return new Resend(apiKey);
 }
-
-const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(request: NextRequest) {
   try {
@@ -14,7 +13,6 @@ export async function POST(request: NextRequest) {
 
     const { name, email, subject, message } = body || {};
 
-    // 🛑 Basic validation
     if (!name || !email || !subject || !message) {
       return NextResponse.json(
         { error: 'All fields are required' },
@@ -29,10 +27,31 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // ✉️ Send email
+    const resend = getResendClient();
+    if (!resend) {
+      if (process.env.NODE_ENV === 'development') {
+        console.log('[contact] Dev mode — email not sent (add RESEND_API_KEY to .env.local):', {
+          name,
+          email,
+          subject,
+          message,
+        });
+        return NextResponse.json(
+          { message: 'Message sent successfully (dev mode)' },
+          { status: 200 }
+        );
+      }
+
+      console.error('RESEND_API_KEY is not defined');
+      return NextResponse.json(
+        { error: 'Email service is not configured' },
+        { status: 503 }
+      );
+    }
+
     const { error } = await resend.emails.send({
-      from: 'onboarding@resend.dev', // safest for free tier
-      to: ['sagas6573@gmail.com'],
+      from: 'onboarding@resend.dev',
+      to: ['sagas6573@gmail.com'],   // ← must be YOUR Resend account email
       replyTo: email,
       subject: `New Contact Form: ${subject}`,
       html: `

@@ -1,5 +1,5 @@
 import { Container, Text, Box, Anchor } from '@mantine/core';
-import classes from './Footer.module.css';
+import classes from './styles/Footer.module.css';
 
 export function Footer() {
   return (
